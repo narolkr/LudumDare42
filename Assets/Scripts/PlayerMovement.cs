@@ -6,22 +6,25 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField]
-    private float mMaxSpeed = 30.0f;
+    private float mMaxSpeed = 20.0f;
     [SerializeField]
-    private float mAcceleration = 10.0f;
-    private float mDirection = 0.0f;
+    private Vector2 mJumpForce;
     [SerializeField]
-    private float mJumpForce = 10.0f;
-
+    private bool mIsGrounded = false;
+    [SerializeField]
+    private float gravityScale = 1.0f;
     private Rigidbody2D mRigidBody;
-    [SerializeField]
-    private bool mIsGrounded;
+    private float mDirection = 0.0f;
+
+
 
     // Use this for initialization
     void Start()
     {
         mRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        mRigidBody.gravityScale = gravityScale;
         mDirection = 0.0f;
+
     }
 
 
@@ -29,28 +32,36 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-
-        //Debug.Log("mDirection:" + mDirection + "\n" + "maxSpeed" + mMaxSpeed);
-        if (mIsGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            mIsGrounded = false;
-            mRigidBody.AddForce(new Vector2(0.0f, mJumpForce));
-        }
+        //WrapPosition ();	
     }
 
     void FixedUpdate()
     {
-        float move = Input.GetAxis("Horizontal");
-        mRigidBody.velocity = new Vector2(move * mMaxSpeed, mRigidBody.velocity.y);
-       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (mIsGrounded)
+            {
+                mIsGrounded = false;
+                mRigidBody.AddForce(mJumpForce);
+            }
+
+        }
+        mDirection = Input.GetAxis("Horizontal");
+        mRigidBody.velocity = new Vector2(mDirection * mMaxSpeed * Time.deltaTime, mRigidBody.velocity.y);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (coll.gameObject.layer == 9)
+        Debug.Log("colliding");
+        if (other.gameObject.tag == "ground")
         {
             mIsGrounded = true;
+            mJumpForce = new Vector2(0.0f, 1400.0f);
+        }
+        if (other.gameObject.tag == "wall")
+        {
+            mIsGrounded = true;
+            mJumpForce = new Vector2(-mDirection * 1500, 1500);
         }
     }
-    
 }
