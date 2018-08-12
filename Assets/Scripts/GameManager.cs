@@ -23,13 +23,14 @@ public class GameManager : MonoBehaviour {
     private int TotalSpacePercentage;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         if (gm == null && GetComponent<GameManager>() != null)
             gm = this.gameObject.GetComponent<GameManager>();
         else
             Debug.Log("Game Manager is missing");
         gm.gameState = GameState.Playing;
+        gm.player = player;
     }
 	
 	// Update is called once per frame

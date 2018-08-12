@@ -576,6 +576,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114087012110292256, guid: 4a69ab05d8814634b944464184f3ac88,
+        type: 2}
+      propertyPath: behaviour
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a69ab05d8814634b944464184f3ac88, type: 2}
   m_IsPrefabAsset: 0
@@ -1151,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea33a6eca6130549803d6fbf77c20b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1284968364}
   DriveC: {fileID: 265916846}
   DriveD: {fileID: 1673695820}
   TotalSpacePercentage: 0
@@ -1586,6 +1591,11 @@ Prefab:
         type: 2}
       propertyPath: playerMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283490544781544, guid: 229a65030c8210b41ab0d48ff965a3ac,
+        type: 2}
+      propertyPath: behaviour
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229a65030c8210b41ab0d48ff965a3ac, type: 2}

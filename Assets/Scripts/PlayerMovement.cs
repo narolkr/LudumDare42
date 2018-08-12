@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "ground")
+        if (coll.gameObject.layer == 9)
         {
             mIsGrounded = true;
         }
