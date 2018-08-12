@@ -8,6 +8,7 @@ public class SimpleEnemy : Enemy {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        player = GameManager.gm.player.transform;
     }
 
 	void Update(){
@@ -18,25 +19,7 @@ public class SimpleEnemy : Enemy {
         if (facingRight)
             flipFlag = 1;
         else
-            flipFlag = -1;
-
-        if (Physics2D.OverlapArea(transform.position + pointA, transform.position + pointB, playerMask))
-        {
-            if (Vector2.Distance(player.position, transform.position) > minDistanceBetweenPlayer)
-            {
-                if (transform.localPosition.x > startPoint && transform.localPosition.x < endPoint)
-                {
-
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                }
-                if (player.position.x > startPoint && player.position.x < endPoint)
-                {
-
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                }
-
-            }
-        }		
-	}
+            flipFlag = -1;        		
+	}    
 	
 }

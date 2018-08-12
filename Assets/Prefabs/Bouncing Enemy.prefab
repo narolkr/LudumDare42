@@ -89,8 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3d606e49f066949849a24c5611fc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  player: {fileID: 0}
+  speed: 2
   playerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -99,6 +98,9 @@ MonoBehaviour:
   storageSize: 10
   facingRight: 0
   defaultBounceHeight: 3
+  bounceableLayers:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!212 &212072577047797598
 SpriteRenderer:
   m_ObjectHideFlags: 1
