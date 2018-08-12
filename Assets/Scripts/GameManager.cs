@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour {
 
 	public enum GameState{
 		Playing,
-		Menu
+		Menu,
+        GameOver
 	}
 
 	GameState gameState;
@@ -18,24 +19,29 @@ public class GameManager : MonoBehaviour {
     public GameObject DriveC;
     public GameObject DriveD;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private int TotalSpacePercentage;
 
-		gameState = GameState.Playing;
-        		
-	}
+	// Use this for initialization
+	void Start ()
+    {
+        if (gm == null && GetComponent<GameManager>() != null)
+            gm = this.gameObject.GetComponent<GameManager>();
+        else
+            Debug.Log("Game Manager is missing");
+        gm.gameState = GameState.Playing;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-		switch (gameState) {
+		switch (gm.gameState) {
 		case GameState.Playing:
 			{
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
                         DriveC.SetActive(!DriveC.active);
                         DriveD.SetActive(!DriveD.active);
-                        Debug.Log("Q pressed");
                     }
                     break;
 			}
