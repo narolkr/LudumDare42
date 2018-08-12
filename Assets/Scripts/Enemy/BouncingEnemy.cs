@@ -10,12 +10,18 @@ public class BouncingEnemy : Enemy
 	public float defaultBounceHeight = 3.0f;
     public LayerMask bounceableLayers;
 
-	// Use this for initialization
-	void Start ()
+    private void Awake()
+    {
+        
+    }
+    // Use this for initialization
+    void Start ()
     {
 		rb = GetComponent<Rigidbody2D> ();
-		startVelocity = new Vector2 (rb.velocity.x, defaultBounceHeight);
+        startVelocity = new Vector2 (rb.velocity.x, defaultBounceHeight);
         player = GameManager.gm.player.transform;
+
+        GameManager.gm.AddTotalSpacePercentage(this.storageSize);
     }
 	
 	// Update is called once per frame

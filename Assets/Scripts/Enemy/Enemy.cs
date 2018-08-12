@@ -46,6 +46,8 @@ public abstract class Enemy : MonoBehaviour
                 }
                 rb.velocity = new Vector2(dir * speed, rb.velocity.y);
             }
+            
+            
         }
     }
 

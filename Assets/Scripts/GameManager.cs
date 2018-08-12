@@ -20,22 +20,26 @@ public class GameManager : MonoBehaviour {
     public GameObject DriveD;
 
     [SerializeField]
-    private int TotalSpacePercentage;
+    public int TotalSpacePercentage;
 
 	// Use this for initialization
-	void Start ()
+	void Awake()
     {
         if (gm == null && GetComponent<GameManager>() != null)
             gm = this.gameObject.GetComponent<GameManager>();
         else
             Debug.Log("Game Manager is missing");
         gm.gameState = GameState.Playing;
+        gm.player = player;
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+    }
+    // Update is called once per frame
+    void Update () {
 
-		switch (gm.gameState) {
+		switch (gm.gameState)
+        {
 		case GameState.Playing:
 			{
                     if (Input.GetKeyDown(KeyCode.Q))
@@ -52,7 +56,15 @@ public class GameManager : MonoBehaviour {
 			}
 
 		}
-
-		
 	}
+
+    public void AddTotalSpacePercentage(int incrementor)
+    {
+        TotalSpacePercentage = TotalSpacePercentage + incrementor;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GAME OVER");
+    }
 }

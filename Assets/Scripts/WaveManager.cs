@@ -14,6 +14,8 @@ public class WaveManager : MonoBehaviour {
     public float minDelayTime;
     public int maxStorageAdded;
     public int minStorageAdded;
+    public bool setDelayNonForIncomingWave;
+    public bool gameOverBool;
 
     void Start()
     {
@@ -26,27 +28,45 @@ public class WaveManager : MonoBehaviour {
 
     void Update()
     {
-        if (waveStart == true)
+        if((GameManager.gm.TotalSpacePercentage < 100) && (!gameOverBool))
         {
-            waveStart = false;
-            if (wavesDescription.setToInfiniteMode)
+            if (waveStart == true)
             {
-                mFirstWave.attackDriveIn = (Waves.WaveData.DriveToAttack) (Random.value>0.5f?1:0);
-                Debug.Log("mFirstWave.attackDriveIn: " + mFirstWave.attackDriveIn);
-                mFirstWave.storagePercentageToAdd = Random.Range(minStorageAdded,maxStorageAdded);
-                if (mFirstWave.attackDriveIn == Waves.WaveData.DriveToAttack.DriveC)
+                waveStart = false;
+                if (wavesDescription.setToInfiniteMode)
                 {
-                    currentAttackDrive = GameManager.gm.DriveC;
+                    mFirstWave.attackDriveIn = (Waves.WaveData.DriveToAttack)(Random.value > 0.5f ? 1 : 0);
+                    Debug.Log("mFirstWave.attackDriveIn: " + mFirstWave.attackDriveIn);
+                    mFirstWave.storagePercentageToAdd = Random.Range(minStorageAdded, maxStorageAdded);
+                    if (mFirstWave.attackDriveIn == Waves.WaveData.DriveToAttack.DriveC)
+                    {
+                        currentAttackDrive = GameManager.gm.DriveC;
+                    }
+                    else
+                    {
+                        currentAttackDrive = GameManager.gm.DriveD;
+                    }
+                    SpawnEnemies();
+                    if (setDelayNonForIncomingWave)
+                    {
+                        setDelayNonForIncomingWave = false;
+                        mFirstWave.startDelay = 0.0f;
+                    }
+                    else
+                    {
+                        mFirstWave.startDelay = Random.Range(minDelayTime, maxDelayTime);
+                    }
+
+                    StartCoroutine(Delay());
                 }
-                else
-                {
-                    currentAttackDrive = GameManager.gm.DriveD;
-                }
-                SpawnEnemies();
-                mFirstWave.startDelay = Random.Range(minDelayTime,maxDelayTime);
-                StartCoroutine(Delay());
             }
         }
+        else
+        {
+            gameOverBool = true;
+            GameManager.gm.GameOver();
+        }
+        
         
     }
 
