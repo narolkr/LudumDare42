@@ -25,8 +25,8 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody2D rb;
     protected bool startRandomMove = true;
 
-    protected Vector3 pointA = new Vector3(-14.38f, 5.1f, 0f);
-    protected Vector3 pointB = new Vector3(14.38f, -5.1f, 0f);
+    public Vector3 pointA = new Vector3(-14.38f, 5.1f, 0f);
+    public Vector3 pointB = new Vector3(14.38f, -5.1f, 0f);
 
     public bool facingRight = true;
     protected int flipFlag = 1;
@@ -41,6 +41,7 @@ public abstract class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.DrawLine(new Vector3(transform.position.x,transform.position.y,0f)+pointA,new Vector3(transform.position.x,transform.position.y,0.0f)+pointB);
         switch (behaviour)
         {
             case moveBehaviour.ChasePlayer:

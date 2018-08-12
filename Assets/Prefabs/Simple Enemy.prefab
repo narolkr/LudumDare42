@@ -106,6 +106,9 @@ MonoBehaviour:
   startPoint: -5.27
   endPoint: 5.6
   storageSize: 5
+  behaviour: 1
+  pointA: {x: -2, y: 2, z: 0}
+  pointB: {x: 2, y: -2, z: 0}
   facingRight: 1
 --- !u!212 &212985944106268036
 SpriteRenderer:

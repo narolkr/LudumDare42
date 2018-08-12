@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Infinite Wave
   m_EditorClassIdentifier: 
   waves:
-  - startDelay: 0
-    attackDriveIn: 0
-    storagePercentageToAdd: 0
+  - startDelay: 9.805062
+    attackDriveIn: 1
+    storagePercentageToAdd: 16
   setToInfiniteMode: 1
