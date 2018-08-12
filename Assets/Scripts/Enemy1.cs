@@ -56,7 +56,7 @@ public class Enemy1 : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 
-		if (coll.gameObject.layer == 8) {
+		if (coll.gameObject.layer == 9) {
 		
 			rb.velocity = startVelocity;	//if it touches the ground, it will bounce up
 		}

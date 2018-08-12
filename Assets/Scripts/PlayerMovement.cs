@@ -28,20 +28,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
 
-        Debug.Log("mDirection:" + mDirection + "\n" + "maxSpeed" + mMaxSpeed);
+
+        //Debug.Log("mDirection:" + mDirection + "\n" + "maxSpeed" + mMaxSpeed);
+        if (mIsGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            mIsGrounded = false;
+            mRigidBody.AddForce(new Vector2(0.0f, mJumpForce));
+        }
     }
 
     void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
         mRigidBody.velocity = new Vector2(move * mMaxSpeed, mRigidBody.velocity.y);
-        if (mIsGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            mIsGrounded = false;
-            mRigidBody.AddForce(new Vector2(0.0f,mJumpForce));
-        }
+       
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -51,5 +52,5 @@ public class PlayerMovement : MonoBehaviour
             mIsGrounded = true;
         }
     }
-
+    
 }
