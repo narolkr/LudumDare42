@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
     public int TotalSpacePercentage;
 
 	// Use this for initialization
-	void Awake()
+	void Awake ()
     {
         if (gm == null && GetComponent<GameManager>() != null)
             gm = this.gameObject.GetComponent<GameManager>();
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
         gm.gameState = GameState.Playing;
         gm.player = player;
     }
+
     private void Start()
     {
     }
