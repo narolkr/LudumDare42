@@ -6,9 +6,8 @@ public class ShowPanels : MonoBehaviour {
 
 	public GameObject tutorialPanel;                            //Store a reference to the Game Object tutorialPanel
     public GameObject creditPanel;                            //Store a reference to the Game Object creditPanel
-    public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
-	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
+	
     public AudioSource clickSound;
 
     private GameObject activePanel;                         
@@ -38,7 +37,6 @@ public class ShowPanels : MonoBehaviour {
 	{
         clickSound.Play();
         tutorialPanel.SetActive(true);
-        optionsTint.SetActive(true);
         menuPanel.SetActive(false);
         SetSelection(tutorialPanel);
 
@@ -49,7 +47,6 @@ public class ShowPanels : MonoBehaviour {
 	{
         menuPanel.SetActive(true);
         tutorialPanel.SetActive(false);
-		optionsTint.SetActive(false);
 	}
 
 	//Call this function to activate and display the main menu panel during the main menu
@@ -67,28 +64,12 @@ public class ShowPanels : MonoBehaviour {
 
 	}
 	
-	//Call this function to activate and display the Pause panel during game play
-	public void ShowPausePanel()
-	{
-        clickSound.Play();
-        pausePanel.SetActive (true);
-		optionsTint.SetActive(true);
-        SetSelection(pausePanel);
-    }
-
-	//Call this function to deactivate and hide the Pause panel during game play
-	public void HidePausePanel()
-	{
-		pausePanel.SetActive (false);
-		optionsTint.SetActive(false);
-
-	}
+	
 
     public void ShowCreditPanel()
     {
         clickSound.Play();
         creditPanel.SetActive(true);
-        optionsTint.SetActive(true);
         menuPanel.SetActive(false);
         SetSelection(creditPanel);
 
@@ -99,6 +80,5 @@ public class ShowPanels : MonoBehaviour {
     {
         menuPanel.SetActive(true);
         creditPanel.SetActive(false);
-        optionsTint.SetActive(false);
     }
 }
