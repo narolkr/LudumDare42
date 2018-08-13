@@ -34,12 +34,16 @@ public class GameManager : MonoBehaviour {
     public GameObject[] releasedMB;
     public GameObject gameOverUninstalled;
     public GameObject gameOverStorage;
+    public GameObject fifty;
+    public GameObject eighty;
     float randomY; //-3.8 to -4.5
     [SerializeField]
     public int TotalSpacePercentage;
     bool once;
-	// Use this for initialization
-	void Awake ()
+    bool once50;
+    bool once80;
+    // Use this for initialization
+    void Awake ()
     {
         if (gm == null && GetComponent<GameManager>() != null)
             gm = this.gameObject.GetComponent<GameManager>();
@@ -120,6 +124,26 @@ public class GameManager : MonoBehaviour {
                 once = true;
             }
             
+        }
+
+        if(storageSpace.value >= 50)
+        {
+            if (!once50)
+            {
+                GameObject o = Instantiate(fifty, new Vector3(14.13f, 5.32f, 0), Quaternion.identity)as GameObject;
+                Destroy(o, 2);
+                once50 = true;
+            }
+        }
+
+        if (storageSpace.value >= 80)
+        {
+            if (!once80)
+            {
+                GameObject o = Instantiate(eighty, new Vector3(14.13f, 5.32f, 0), Quaternion.identity)as GameObject;
+                Destroy(o, 2);
+                once80 = true;
+            }
         }
 
     }
