@@ -4,10 +4,12 @@ using UnityEngine.EventSystems;
 
 public class ShowPanels : MonoBehaviour {
 
-	public GameObject optionsPanel;							//Store a reference to the Game Object OptionsPanel 
-	public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
+	public GameObject tutorialPanel;                            //Store a reference to the Game Object tutorialPanel
+    public GameObject creditPanel;                            //Store a reference to the Game Object creditPanel
+    public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
+    public AudioSource clickSound;
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
@@ -22,7 +24,7 @@ public class ShowPanels : MonoBehaviour {
         activePanelMenuObject = activePanel.GetComponent<MenuObject>();
         if (activePanelMenuObject != null)
         {
-            activePanelMenuObject.SetFirstSelected();
+           // activePanelMenuObject.SetFirstSelected();
         }
     }
 
@@ -32,27 +34,29 @@ public class ShowPanels : MonoBehaviour {
     }
 
     //Call this function to activate and display the Options panel during the main menu
-    public void ShowOptionsPanel()
+    public void ShowTutorialPanel()
 	{
-		optionsPanel.SetActive(true);
-		optionsTint.SetActive(true);
+        clickSound.Play();
+        tutorialPanel.SetActive(true);
+        optionsTint.SetActive(true);
         menuPanel.SetActive(false);
-        SetSelection(optionsPanel);
+        SetSelection(tutorialPanel);
 
     }
 
 	//Call this function to deactivate and hide the Options panel during the main menu
-	public void HideOptionsPanel()
+	public void HideTutorialPanel()
 	{
         menuPanel.SetActive(true);
-        optionsPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
 		optionsTint.SetActive(false);
 	}
 
 	//Call this function to activate and display the main menu panel during the main menu
 	public void ShowMenu()
 	{
-		menuPanel.SetActive (true);
+        clickSound.Play();
+        menuPanel.SetActive (true);
         SetSelection(menuPanel);
     }
 
@@ -66,7 +70,8 @@ public class ShowPanels : MonoBehaviour {
 	//Call this function to activate and display the Pause panel during game play
 	public void ShowPausePanel()
 	{
-		pausePanel.SetActive (true);
+        clickSound.Play();
+        pausePanel.SetActive (true);
 		optionsTint.SetActive(true);
         SetSelection(pausePanel);
     }
@@ -78,4 +83,22 @@ public class ShowPanels : MonoBehaviour {
 		optionsTint.SetActive(false);
 
 	}
+
+    public void ShowCreditPanel()
+    {
+        clickSound.Play();
+        creditPanel.SetActive(true);
+        optionsTint.SetActive(true);
+        menuPanel.SetActive(false);
+        SetSelection(creditPanel);
+
+    }
+
+    //Call this function to deactivate and hide the Options panel during the main menu
+    public void HideCreditPanel()
+    {
+        menuPanel.SetActive(true);
+        creditPanel.SetActive(false);
+        optionsTint.SetActive(false);
+    }
 }
