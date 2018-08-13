@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;
     private float moveSpeed = 6f;
+    public AudioSource jumpSound;
 
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        jumpSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
 
     public void OnJumpInputDown()
     {
+        jumpSound.Play();
         if (wallSliding)
         {
             if (wallDirX == directionalInput.x)
