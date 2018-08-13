@@ -55,7 +55,11 @@ public class LoopTrigger : MonoBehaviour {
 	{
 		if (loopableLayers == (loopableLayers | (1 << collider.gameObject.layer)))
         {
-            Debug.Log("if is true: "+ collider.gameObject.layer);
+            //Debug.Log("if is true: "+ collider.gameObject.layer);
+            if(collider.transform.tag == "Player")
+            {
+                //collider.gameObject.GetComponent<>
+            }
             WrapPosition(collider);
         }
 			

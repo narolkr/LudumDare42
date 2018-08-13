@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private float gravity;
     private float maxJumpVelocity;
     private float minJumpVelocity;
-    private Vector3 velocity;
+    public Vector3 velocity;
     private float velocityXSmoothing;
 
     private Controller2D controller;
@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     {
         CalculateVelocity();
         HandleWallSliding();
+
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 

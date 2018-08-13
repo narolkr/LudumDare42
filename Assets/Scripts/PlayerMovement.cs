@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float mMaxSpeed = 20.0f;
     [SerializeField]
-    private Vector2 mJumpForce;
-    [SerializeField]
     private bool mIsGrounded = false;
     [SerializeField]
     private float gravityScale = 1.0f;
     private Rigidbody2D mRigidBody;
     private float mDirection = 0.0f;
+    [SerializeField]
+    public float jumpForceMax;
+    public Vector2 mJumpForce;
 
 
 
@@ -56,12 +57,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "ground")
         {
             mIsGrounded = true;
-            mJumpForce = new Vector2(0.0f, 1400.0f);
+            mJumpForce = new Vector2(0.0f, jumpForceMax);
         }
         if (other.gameObject.tag == "wall")
         {
             mIsGrounded = true;
-            mJumpForce = new Vector2(-mDirection * 1500, 1500);
+            mJumpForce = new Vector2(-mDirection * jumpForceMax, jumpForceMax);
         }
     }
 }
