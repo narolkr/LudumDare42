@@ -9,6 +9,7 @@ public class SimpleEnemy : Enemy {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         player = GameManager.gm.player.transform;
+        die = GetComponent<AudioSource>();
     }
 
 	void Update(){

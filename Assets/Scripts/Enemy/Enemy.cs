@@ -24,6 +24,7 @@ public abstract class Enemy : MonoBehaviour
     protected Transform player;
     protected Rigidbody2D rb;
     protected bool startRandomMove = true;
+    protected AudioSource die;
 
     public Vector3 pointA = new Vector3(-14.38f, 5.1f, 0f);
     public Vector3 pointB = new Vector3(14.38f, -5.1f, 0f);
@@ -124,8 +125,7 @@ public abstract class Enemy : MonoBehaviour
     
     protected void death()
     {
-        //die.Play ();
-        //anim.SetBool ("death", isDeath);
+        die.Play ();
         Destroy(gameObject, 0.5f);
     }
 }

@@ -96,6 +96,9 @@ MonoBehaviour:
   startPoint: 5.27
   endPoint: 5.6
   storageSize: 10
+  behaviour: 3
+  pointA: {x: -14.38, y: 5.1, z: 0}
+  pointB: {x: 14.38, y: -5.1, z: 0}
   facingRight: 0
   defaultBounceHeight: 3
   bounceableLayers:

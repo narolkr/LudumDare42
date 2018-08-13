@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114087012110292256}
   - component: {fileID: 50063131369806818}
   - component: {fileID: 58283485753259980}
+  - component: {fileID: 82217281229275928}
   m_Layer: 10
   m_Name: IDM
   m_TagString: Untagged
