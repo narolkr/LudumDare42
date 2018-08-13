@@ -19,9 +19,7 @@ public class BouncingEnemy : Enemy
     {
 		rb = GetComponent<Rigidbody2D> ();
         startVelocity = new Vector2 (rb.velocity.x, defaultBounceHeight);
-        player = GameManager.gm.player.transform;
-
-        GameManager.gm.AddTotalSpacePercentage(this.storageSize);
+        
     }
 	
 	// Update is called once per frame

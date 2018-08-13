@@ -40,6 +40,7 @@ public abstract class Enemy : MonoBehaviour
         transform.localScale = theScale;
     }
 
+
     void FixedUpdate()
     {
         Debug.DrawLine(new Vector3(transform.position.x,transform.position.y,0f)+pointA,new Vector3(transform.position.x,transform.position.y,0.0f)+pointB);
@@ -74,6 +75,7 @@ public abstract class Enemy : MonoBehaviour
 
     void ChasePlayer()
     {
+        player = GameManager.gm.player.transform;
         if (Physics2D.OverlapArea(transform.position + pointA, transform.position + pointB, playerMask))
         {
             if (Vector2.Distance(player.position, transform.position) > minDistanceBetweenPlayer)
@@ -123,9 +125,13 @@ public abstract class Enemy : MonoBehaviour
         }
     }
     
-    protected void death()
+    public void death()
     {
+        Debug.Log("ttt");
+        GameManager.gm.AddTotalSpacePercentage(-storageSize);
+        die = GetComponent<AudioSource>();
         die.Play ();
-        Destroy(gameObject, 0.5f);
+        GameManager.gm.Release();
+        Destroy(gameObject);
     }
 }

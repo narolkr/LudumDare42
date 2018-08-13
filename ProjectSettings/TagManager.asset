@@ -7,6 +7,8 @@ TagManager:
   - ground
   - wall
   - Through
+  - enemy
+  - p
   layers:
   - Default
   - TransparentFX

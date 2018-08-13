@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour {
     public int minStorageAdded;
     public bool setDelayNonForIncomingWave;
     public bool gameOverBool;
-
+   GameObject player;
     void Start()
     {
         waveStart = true;
@@ -64,7 +64,7 @@ public class WaveManager : MonoBehaviour {
         else
         {
             gameOverBool = true;
-            GameManager.gm.GameOver();
+            
         }
         
         
@@ -80,6 +80,11 @@ public class WaveManager : MonoBehaviour {
                 locationSpawn.GetChild(Random.Range(0,locationSpawn.childCount)).position, Quaternion.identity,
                 currentAttackDrive.transform.Find("Enemies").transform);
             totalStorage += enemy.GetComponent<Enemy>().storageSize;
+
+
+            player = GameManager.gm.player;
+
+            GameManager.gm.AddTotalSpacePercentage(enemy.GetComponent<Enemy>().storageSize);
         }
     }
 

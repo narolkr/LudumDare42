@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private Vector2 directionalInput;
     private bool wallSliding;
     private int wallDirX;
-
+    public bool InputFreeze;
     private void Start()
     {
         controller = GetComponent<Controller2D>();
@@ -41,20 +41,26 @@ public class Player : MonoBehaviour
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         jumpSound = GetComponent<AudioSource>();
+
+        
     }
 
     private void Update()
     {
-        CalculateVelocity();
-        HandleWallSliding();
-
-
-        controller.Move(velocity * Time.deltaTime, directionalInput);
-
-        if (controller.collisions.above || controller.collisions.below)
+        if(!InputFreeze)
         {
-            velocity.y = 0f;
+            CalculateVelocity();
+            HandleWallSliding();
+
+
+            controller.Move(velocity * Time.deltaTime, directionalInput);
+
+            if (controller.collisions.above || controller.collisions.below)
+            {
+                velocity.y = 0f;
+            }
         }
+       
     }
 
     public void SetDirectionalInput(Vector2 input)
