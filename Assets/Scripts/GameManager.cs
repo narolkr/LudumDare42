@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour {
     public Sprite CDriveNotActive;
     public Sprite DDriveNotActive;
 
-    public SpriteRenderer cdrive;
-    public SpriteRenderer ddrive;
+    public Image cdrive;
+    public Image ddrive;
 
     public GameObject[] releasedMB;
     public GameObject gameOverUninstalled;
@@ -102,9 +102,10 @@ public class GameManager : MonoBehaviour {
                 storageSpace.value = TotalSpacePercentage;
             }
         }
-        else
+       /* else
         if (storageSpace.value > TotalSpacePercentage)
         {
+            Debug.Log("decreasing");
             t -= sliderGrowSpeed * Time.deltaTime;
             storageSpace.value = Mathf.Lerp(storageSpace.value, TotalSpacePercentage, t);
 
@@ -113,7 +114,7 @@ public class GameManager : MonoBehaviour {
                 t = 0;
                 storageSpace.value = TotalSpacePercentage;
             }
-        }
+        }*/
 
 
         if (storageSpace.value >= 100)
@@ -150,7 +151,13 @@ public class GameManager : MonoBehaviour {
 
     public void AddTotalSpacePercentage(int incrementor)
     {
+        
         TotalSpacePercentage = TotalSpacePercentage + incrementor;
+
+        if(incrementor < 0)
+        {
+            storageSpace.value = TotalSpacePercentage;
+        }
     }
 
     public void GameOver(bool sizeFull)

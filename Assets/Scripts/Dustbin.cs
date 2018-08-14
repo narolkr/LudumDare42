@@ -29,7 +29,7 @@ public class Dustbin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "p")
+        if(col.gameObject.layer == 8)
             GameManager.gm.GameOver(false);
     }
 

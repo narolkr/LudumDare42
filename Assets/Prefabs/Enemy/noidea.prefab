@@ -240,7 +240,7 @@ MonoBehaviour:
     m_Bits: 256
   startPoint: 5.27
   endPoint: 5.6
-  storageSize: 5
+  storageSize: 2
   behaviour: 0
   pointA: {x: -3, y: 3, z: 0}
   pointB: {x: 3, y: -3, z: 0}
